@@ -1,0 +1,6 @@
+node_modules/
+.course-data/
+.course-state/
+.ai/.env
+*.log
+

@@ -1,0 +1,15 @@
+{
+  "name": "cairnkeep-course-labs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Synthetic hands-on labs for the Cairnkeep learning path.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test",
+    "check": "npm test && node scripts/verify-course.mjs"
+  }
+}
+
