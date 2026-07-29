@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+# Cairnkeep launcher for Claude Code. Loads this repo's .ai/.env (if present),
+# then launches Claude Code in the repo root. Keep provider/profile specifics in
+# your own wrapper; this stays minimal and generic.
+#
+# Wrapper seams (all optional, all no-ops when absent):
+#   .ai/pre-launch.sh        sourced after .env, before launch. May export env
+#                            (e.g. a provider base URL) or abort the launch by
+#                            returning / exiting non-zero.
+#   CAIRN_EXTRA_SETTINGS     path to a settings JSON layered on top of the
+#                            harness defaults (passed as --settings). Process env
+#                            still wins over this file, so an inline value beats
+#                            the profile.
+#   .ai/post-exit.sh         sourced after the harness exits (normal or not),
+#                            with $CAIRN_EXIT_STATUS set to the harness exit code.
+set -euo pipefail
+ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+
+capability_contract_enabled() {
+  local value="${CAIRN_CAPABILITY_CONTRACT:-}"
+  value="${value#"${value%%[![:space:]]*}"}"
+  value="${value%"${value##*[![:space:]]}"}"
+  case "$value" in
+    1|[Tt][Rr][Uu][Ee]|[Yy][Ee][Ss]|[Oo][Nn]) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+resolve_cairn_root() {
+  local source dir
+  if ! source=$(type -P cairn); then
+    echo "cairn: capability contract requires the cairn executable on PATH" >&2
+    return 127
+  fi
+  while [[ -L "$source" ]]; do
+    dir=$(cd -P "$(dirname "$source")" && pwd)
+    source=$(readlink "$source")
+    [[ "$source" == /* ]] || source="$dir/$source"
+  done
+  cd -P "$(dirname "$source")/.." && pwd
+}
+
+if [[ -f "$ROOT_DIR/.ai/.env" ]]; then
+  set -a
+  # shellcheck disable=SC1091
+  . "$ROOT_DIR/.ai/.env"
+  set +a
+fi
+if [[ -f "$ROOT_DIR/.ai/pre-launch.sh" ]]; then
+  # shellcheck disable=SC1091
+  . "$ROOT_DIR/.ai/pre-launch.sh"
+fi
+
+if capability_contract_enabled; then
+  CAIRN_RUNTIME_ROOT=$(resolve_cairn_root)
+  node "$CAIRN_RUNTIME_ROOT/mcp-memory-server/dist/capability-cli.js" \
+    harness-recover </dev/null >/dev/null 2>&1 || true
+  CLAUDE_CAPABILITY_ROOT="$ROOT_DIR/.ai/capability-contract/claude"
+  "$CAIRN_RUNTIME_ROOT/scripts/sync-claude-assets.sh" \
+    --apply --capability-overlay --live-root "$CLAUDE_CAPABILITY_ROOT" >/dev/null
+  export CLAUDE_CONFIG_DIR="$CLAUDE_CAPABILITY_ROOT"
+fi
+
+cd "$ROOT_DIR"
+
+launch_args=()
+if [[ -n "${CAIRN_EXTRA_SETTINGS:-}" ]]; then
+  launch_args+=(--settings "$CAIRN_EXTRA_SETTINGS")
+fi
+
+if [[ -f "$ROOT_DIR/.ai/post-exit.sh" ]]; then
+  # Run (not exec) so the post-exit hook fires after the harness returns.
+  set +e
+  claude "${launch_args[@]}" "$@"
+  CAIRN_EXIT_STATUS=$?
+  set -e
+  export CAIRN_EXIT_STATUS
+  # shellcheck disable=SC1091
+  . "$ROOT_DIR/.ai/post-exit.sh" || true
+  exit "$CAIRN_EXIT_STATUS"
+fi
+exec claude "${launch_args[@]}" "$@"

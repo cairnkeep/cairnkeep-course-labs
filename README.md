@@ -14,6 +14,8 @@ It uses Node.js built-ins and requires no production credentials or service.
 git clone https://github.com/cairnkeep/cairnkeep-course-labs.git
 cd cairnkeep-course-labs
 npm test
+cp .ai/course.env.example .ai/.env
+cairn doctor
 ```
 
 Follow [the course spine](COURSE.md). Each module names a Git checkpoint so a
@@ -30,4 +32,3 @@ written lesson, workshop, blog post, and video can start from the same state.
 
 The canonical product documentation and learning path live in the
 [Cairnkeep repository](https://github.com/cairnkeep/cairnkeep/tree/main/docs/learning).
-
