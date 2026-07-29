@@ -9,7 +9,7 @@ PROJECT_STORE="$ROOT/.agentfs"
   printf 'Preview: remove only %s\nRe-run with --yes after exiting every course harness.\n' "$TARGET"
   exit 0
 }
-[[ $TARGET == "$ROOT/.course-state" && $ROOT != / ]] || {
+[[ $TARGET == "$ROOT/.course-state" && $PROJECT_STORE == "$ROOT/.agentfs" && $ROOT != / ]] || {
   echo "refusing unsafe course cleanup target" >&2
   exit 1
 }

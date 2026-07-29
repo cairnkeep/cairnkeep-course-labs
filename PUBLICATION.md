@@ -1,0 +1,45 @@
+# Article and video production map
+
+The course uses one source hierarchy:
+
+1. Canonical explanation and acceptance criteria in Cairnkeep `docs/learning`.
+2. Executable state and synthetic fixtures in this repository.
+3. Blog articles derived from the canonical lesson.
+4. Video scripts derived from the verified article and the same Git checkpoint.
+
+Never maintain a separate demo script with different commands.
+
+## Series
+
+| Episode | Checkpoint | Written focus | Demo beat | Target |
+|---|---|---|---|---:|
+| 00 | `course-00-app` | Why durable context exists | Ask the app question before memory | 8 min |
+| 01 | `course-01-bootstrap` | Install, storage, and first project | Bootstrap and doctor | 12 min |
+| 02 | `course-02-memory` | Reviewed memory and project knowledge | New-session recall and wiki query | 14 min |
+| 03 | `course-03-quality` | Review and security | Find one reproducible serious bug | 14 min |
+| 04 | `course-04-operation` | Storage and optional topology | Export, restore, and draw data flow | 15 min |
+| 05 | `course-05-evidence` | Evidence and typed nodes | Inspect redaction and dry-run import | 15 min |
+| 06 | `course-06-governance` | Capability state | Disable, restart, reset | 11 min |
+| 07 | `course-07-evaluation` | Measurement and boundaries | Validate, run, read claim scope | 16 min |
+
+## Presenter script frame
+
+Use these beats for every episode:
+
+1. **Hook:** one concrete failure or repetitive task, 20-40 seconds.
+2. **Outcome:** one observable result the viewer will reproduce.
+3. **Checkpoint:** show the tag and a clean `git status`.
+4. **Mental model:** one diagram, no architecture tour.
+5. **Demo:** say intent before each command and pause on verification output.
+6. **Boundary:** state storage, network, consent, and trust implications.
+7. **Recovery:** demonstrate one safe failure path.
+8. **Recap:** result, cleanup, and next checkpoint.
+
+## Incremental production loop
+
+For each episode: expand the canonical lesson, execute it from the checkpoint,
+record expected output, write the presenter script, rehearse without recording,
+pilot with one learner, fix repeated confusion, then publish article and video
+together. Re-run the complete command verification after each Cairnkeep minor
+release; re-record only episodes whose observable behavior changed.
+

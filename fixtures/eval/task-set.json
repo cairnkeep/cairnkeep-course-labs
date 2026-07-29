@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "trail-ledger-offline-v1",
+  "source": {
+    "kind": "git",
+    "repository": "../..",
+    "revision": "e573a40d171d44ac3447ed65dd563b2229c94861"
+  },
+  "tasks": [
+    {
+      "id": "baseline-tests",
+      "input": "Verify the immutable Trail Ledger baseline and write the adapter marker.",
+      "workspace": {
+        "path": "."
+      },
+      "prepare": {
+        "program": "node",
+        "args": ["--test"]
+      },
+      "verify": {
+        "program": "node",
+        "args": ["-e", "process.exit(require('node:fs').existsSync('adapter-result.txt') ? 0 : 9)"]
+      },
+      "limits": {
+        "elapsed_ms": 10000,
+        "stdout_bytes": 65536
+      }
+    }
+  ]
+}
+
