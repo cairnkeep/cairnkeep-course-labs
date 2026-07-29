@@ -16,5 +16,6 @@ PROJECT_STORE="$ROOT/.agentfs"
 rm -rf -- "$TARGET"
 if [[ -d $PROJECT_STORE ]]; then
   find "$PROJECT_STORE" -maxdepth 1 -type f ! -name .gitignore -delete
+  rm -rf -- "$PROJECT_STORE/eval"
 fi
 printf 'removed course-only state: %s\n' "$TARGET"

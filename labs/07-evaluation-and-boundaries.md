@@ -11,7 +11,7 @@ scope, perform one-capability ablation, and state what the result cannot prove.
 
 ```bash
 export CAIRN_EVAL=1
-output="$PWD/.course-state/eval"
+output="$PWD/.agentfs/eval/experiments"
 cairn eval validate \
   --task-set course-eval-task-set.json \
   --adapter fixtures/eval/adapter.json \
