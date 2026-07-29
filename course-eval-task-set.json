@@ -3,7 +3,7 @@
   "id": "trail-ledger-offline-v1",
   "source": {
     "kind": "git",
-    "repository": "../..",
+    "repository": ".",
     "revision": "e573a40d171d44ac3447ed65dd563b2229c94861"
   },
   "tasks": [

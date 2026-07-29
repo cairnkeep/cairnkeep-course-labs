@@ -13,7 +13,7 @@ scope, perform one-capability ablation, and state what the result cannot prove.
 export CAIRN_EVAL=1
 output="$PWD/.course-state/eval"
 cairn eval validate \
-  --task-set fixtures/eval/task-set.json \
+  --task-set course-eval-task-set.json \
   --adapter fixtures/eval/adapter.json \
   --output "$output" --json
 ```
@@ -25,7 +25,7 @@ committed document and its source is the immutable `course-00-app` commit.
 
 ```bash
 cairn eval run \
-  --task-set fixtures/eval/task-set.json \
+  --task-set course-eval-task-set.json \
   --adapter fixtures/eval/adapter.json \
   --output "$output" --seed course-1 --yes --json
 cairn eval report --experiment EXPERIMENT-ID --json
@@ -39,7 +39,7 @@ are framework evidence only, not evidence that Cairnkeep improved an agent.
 
 ```bash
 cairn eval ablate --disable memory.search \
-  --task-set fixtures/eval/task-set.json \
+  --task-set course-eval-task-set.json \
   --adapter fixtures/eval/adapter.json \
   --output "$output" --seed course-1 --json
 ```
@@ -74,4 +74,3 @@ feature.
 - Ablation changes exactly one capability and reports both state digests.
 - The learner labels all fixture output `offline-framework`.
 - L17 is explained as a boundary and future design, not shipped software.
-
