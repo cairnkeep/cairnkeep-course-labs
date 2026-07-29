@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "scope": "project",
+  "address_space": "memory",
+  "import_id": "course-status-knowledge-v1",
+  "conflict_policy": "reject",
+  "dry_run": true,
+  "nodes": [
+    {
+      "key": "knowledge/status/allowed-values",
+      "value": "Trail Ledger accepts available, borrowed, and maintenance.",
+      "node_type": "knowledge",
+      "tags": ["course", "status", "trail-ledger"]
+    },
+    {
+      "key": "knowledge/storage/atomic-replace",
+      "value": "Trail Ledger writes a temporary JSON file and renames it atomically.",
+      "node_type": "knowledge",
+      "tags": ["course", "storage", "trail-ledger"]
+    }
+  ]
+}
+
