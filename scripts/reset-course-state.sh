@@ -3,6 +3,7 @@ set -euo pipefail
 
 ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 TARGET="$ROOT/.course-state"
+PROJECT_STORE="$ROOT/.agentfs"
 
 [[ ${1:-} == --yes ]] || {
   printf 'Preview: remove only %s\nRe-run with --yes after exiting every course harness.\n' "$TARGET"
@@ -13,5 +14,7 @@ TARGET="$ROOT/.course-state"
   exit 1
 }
 rm -rf -- "$TARGET"
+if [[ -d $PROJECT_STORE ]]; then
+  find "$PROJECT_STORE" -maxdepth 1 -type f ! -name .gitignore -delete
+fi
 printf 'removed course-only state: %s\n' "$TARGET"
-

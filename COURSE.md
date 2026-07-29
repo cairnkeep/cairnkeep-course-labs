@@ -80,8 +80,10 @@ cairn doctor
 cairn memory path
 ```
 
-The memory path must resolve inside this clone's `.course-state/` before a lab
-writes course memory. If it does not, stop and repair `.ai/.env`.
+The named/global memory path must resolve inside this clone's `.course-state/`
+before a lab writes course memory. Project scope remains in
+`.agentfs/project.db`; the cleanup command handles both fixed course locations.
+If the global path differs, stop and repair `.ai/.env`.
 
 ## Cleanup
 
@@ -91,6 +93,6 @@ Exit every harness and memory-server child, then run:
 scripts/reset-course-state.sh --yes
 ```
 
-This command refuses to operate unless the target is this repository's
-`.course-state/`. It does not touch the user's normal Cairnkeep store.
-
+This command refuses to operate unless its targets are this repository's
+`.course-state/` and generated database files immediately under `.agentfs/`.
+It does not touch the user's normal Cairnkeep store.
