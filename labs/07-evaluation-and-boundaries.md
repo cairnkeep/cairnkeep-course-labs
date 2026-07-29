@@ -12,23 +12,24 @@ scope, perform one-capability ablation, and state what the result cannot prove.
 ```bash
 export CAIRN_EVAL=1
 output="$PWD/.agentfs/eval/experiments"
-cairn eval validate \
-  --task-set course-eval-task-set.json \
-  --adapter fixtures/eval/adapter.json \
+core=$(node scripts/locate-cairnkeep-core.mjs)
+"$core/bin/cairn" eval validate \
+  --task-set "$core/examples/eval/task-set.json" \
+  --adapter "$core/examples/eval/adapter.json" \
   --output "$output" --json
 ```
 
-Validation must invoke no adapter and create no experiment. The task set is a
-committed document and its source is the immutable `course-00-app` commit.
+Validation must invoke no adapter and create no experiment. The task set is the
+installed package-owned fixture with exact package version and digest binding.
 
 ## Run two passes
 
 ```bash
-cairn eval run \
-  --task-set course-eval-task-set.json \
-  --adapter fixtures/eval/adapter.json \
+"$core/bin/cairn" eval run \
+  --task-set "$core/examples/eval/task-set.json" \
+  --adapter "$core/examples/eval/adapter.json" \
   --output "$output" --seed course-1 --yes --json
-cairn eval report --experiment EXPERIMENT-ID --json
+"$core/bin/cairn" eval report --experiment EXPERIMENT-ID --json
 ```
 
 Inspect full, executed, eligible, paired, and missing populations. Run 1 and
@@ -38,9 +39,9 @@ are framework evidence only, not evidence that Cairnkeep improved an agent.
 ## One-capability ablation
 
 ```bash
-cairn eval ablate --disable memory.search \
-  --task-set course-eval-task-set.json \
-  --adapter fixtures/eval/adapter.json \
+"$core/bin/cairn" eval ablate --disable memory.search \
+  --task-set "$core/examples/eval/task-set.json" \
+  --adapter "$core/examples/eval/adapter.json" \
   --output "$output" --seed course-1 --json
 ```
 
@@ -52,8 +53,8 @@ and makes no quality, efficiency, cost, latency, causal, or significance claim.
 ## Retention
 
 ```bash
-cairn eval prune --older-than-days 0 --dry-run --json
-cairn eval delete --experiment EXPERIMENT-ID --dry-run --json
+"$core/bin/cairn" eval prune --older-than-days 0 --dry-run --json
+"$core/bin/cairn" eval delete --experiment EXPERIMENT-ID --dry-run --json
 ```
 
 Use `scripts/reset-course-state.sh --yes` only after inspection.
