@@ -5,7 +5,7 @@ learning path. The canonical explanations remain in Cairnkeep's `docs/learning`;
 this repository supplies one reproducible project and stable Git checkpoints.
 
 **Lesson coverage:** L00, L01, L02, L03, L04, L05, L06, L07, L08, L09,
-L10, L11, L12, L13, L14, L15, L16, L17.
+L10, L11, L12, L13, L14, L15, L16, L17, L18.
 
 ## How to use checkpoints
 
@@ -27,6 +27,7 @@ work you want to keep. The final `main` branch contains every lab.
 | `course-05-evidence` | L13-L14 | Local evidence lifecycle and typed-memory exercise |
 | `course-06-governance` | L15 | Capability precedence and restart exercise |
 | `course-07-evaluation` | L16-L17 | Offline evaluation and product-boundary exercise |
+| `course-08-graph` | L18 | Optional local structural graph and harness delegates |
 
 ## Adoption order
 
@@ -61,6 +62,7 @@ Each step is useful without the next. No optional feature is silently enabled.
 | Capability contract | Off | `CAIRN_CAPABILITY_CONTRACT`, `cairn capabilities` | project config and optional callback DB | 06 |
 | Evaluation | Off | `CAIRN_EVAL`, `cairn eval` | contained experiment output | 07 |
 | Meta-agent proposal loop | Not shipped | design contract only | none | 07 |
+| Local code graph | Off | `cairn graph`, `/graphify` delegates | ignored `.planning/graphs/` artifacts and isolated `graphify` CLI | 08 |
 
 ## Modules
 
@@ -70,6 +72,7 @@ Each step is useful without the next. No optional feature is silently enabled.
 - [05 - Session evidence and typed memory](labs/05-session-evidence.md) maps L13-L14.
 - [06 - Capability governance](labs/06-capability-governance.md) maps L15.
 - [07 - Evaluation and boundaries](labs/07-evaluation-and-boundaries.md) maps L16-L17.
+- [08 - Local code graph](labs/08-local-code-graph.md) maps L18.
 
 ## Universal verification
 
