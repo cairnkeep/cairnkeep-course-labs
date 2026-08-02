@@ -1,6 +1,6 @@
 node_modules/
 .course-data/
 .course-state/
+graphify-out/
 .ai/.env
 *.log
-
