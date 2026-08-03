@@ -21,6 +21,7 @@ Never maintain a separate demo script with different commands.
 | 05 | `course-05-evidence` | Evidence and typed nodes | Inspect redaction and dry-run import | 15 min |
 | 06 | `course-06-governance` | Capability state | Disable, restart, reset | 11 min |
 | 07 | `course-07-evaluation` | Measurement and boundaries | Validate, run, read claim scope | 16 min |
+| 09 | `course-09-skill` | Validated skill improvement | Review, evaluate, apply, roll back | 18 min |
 
 ## Presenter script frame
 
@@ -42,4 +43,3 @@ record expected output, write the presenter script, rehearse without recording,
 pilot with one learner, fix repeated confusion, then publish article and video
 together. Re-run the complete command verification after each Cairnkeep minor
 release; re-record only episodes whose observable behavior changed.
-

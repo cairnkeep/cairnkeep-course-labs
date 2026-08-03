@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "id": "course-proposal-adapter",
+  "command": { "program": "./proposal-adapter.mjs", "args": [] },
+  "environment_allowlist": [],
+  "limits": { "elapsed_ms": 10000, "stdout_bytes": 65536 }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "course-skill-confirmation",
+  "source": { "kind": "git", "repository": ".", "revision": "HEAD" },
+  "tasks": [
+    {
+      "id": "confirm-alpha",
+      "input": "Use the project skill and complete synthetic confirmation task alpha.",
+      "workspace": { "path": "." },
+      "prepare": { "program": "node", "args": ["-e", "process.exit(0)"] },
+      "verify": { "program": "node", "args": ["-e", "process.exit(require('node:fs').existsSync('skill-pass') ? 0 : 9)"] },
+      "limits": { "elapsed_ms": 10000, "stdout_bytes": 65536 }
+    },
+    {
+      "id": "confirm-beta",
+      "input": "Use the project skill and complete synthetic confirmation task beta.",
+      "workspace": { "path": "." },
+      "prepare": { "program": "node", "args": ["-e", "process.exit(0)"] },
+      "verify": { "program": "node", "args": ["-e", "process.exit(require('node:fs').existsSync('skill-pass') ? 0 : 9)"] },
+      "limits": { "elapsed_ms": 10000, "stdout_bytes": 65536 }
+    }
+  ]
+}
