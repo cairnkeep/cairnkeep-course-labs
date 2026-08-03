@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "course-skill-exploration",
+  "source": { "kind": "git", "repository": ".", "revision": "HEAD" },
+  "tasks": [
+    {
+      "id": "explore-alpha",
+      "input": "Use the project skill and complete synthetic exploration task alpha.",
+      "workspace": { "path": "." },
+      "prepare": { "program": "node", "args": ["-e", "process.exit(0)"] },
+      "verify": { "program": "node", "args": ["-e", "process.exit(require('node:fs').existsSync('skill-pass') ? 0 : 9)"] },
+      "limits": { "elapsed_ms": 10000, "stdout_bytes": 65536 }
+    },
+    {
+      "id": "explore-beta",
+      "input": "Use the project skill and complete synthetic exploration task beta.",
+      "workspace": { "path": "." },
+      "prepare": { "program": "node", "args": ["-e", "process.exit(0)"] },
+      "verify": { "program": "node", "args": ["-e", "process.exit(require('node:fs').existsSync('skill-pass') ? 0 : 9)"] },
+      "limits": { "elapsed_ms": 10000, "stdout_bytes": 65536 }
+    }
+  ]
+}

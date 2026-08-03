@@ -1,0 +1,41 @@
+{
+  "failure": {
+    "schema_version": 1,
+    "session_id": "course-skill-failure-001",
+    "harness": "pi",
+    "project_root": "$PROJECT_ROOT",
+    "started_at": "2026-08-03T07:00:00.000Z",
+    "ended_at": "2026-08-03T07:01:00.000Z",
+    "events": [
+      { "sequence": 0, "kind": "tool_invocation", "timestamp": "2026-08-03T07:00:10.000Z", "payload": { "call_id": "test-1", "tool_name": "bash", "input": { "command": "npm test" } } },
+      { "sequence": 1, "kind": "tool_result", "timestamp": "2026-08-03T07:00:20.000Z", "payload": { "call_id": "test-1", "is_error": true, "output": "TypeError: Cannot read properties of undefined (reading 'name')\n    at loadUser ($PROJECT_ROOT/src/user.ts:41:9)" } }
+    ],
+    "capture": { "captured_at": "2026-08-03T07:01:01.000Z", "omitted_reasoning_blocks": 0, "omitted_unknown_records": 0, "truncated": false }
+  },
+  "fix": {
+    "schema_version": 1,
+    "session_id": "course-skill-fix-001",
+    "harness": "opencode",
+    "project_root": "$PROJECT_ROOT",
+    "started_at": "2026-08-03T08:00:00.000Z",
+    "ended_at": "2026-08-03T08:01:00.000Z",
+    "events": [
+      { "sequence": 0, "kind": "tool_invocation", "timestamp": "2026-08-03T08:00:10.000Z", "payload": { "call_id": "test-2", "tool_name": "bash", "input": { "command": "npm test" } } },
+      { "sequence": 1, "kind": "tool_result", "timestamp": "2026-08-03T08:00:20.000Z", "payload": { "call_id": "test-2", "is_error": false, "output": "18 tests passed" } }
+    ],
+    "capture": { "captured_at": "2026-08-03T08:01:01.000Z", "omitted_reasoning_blocks": 0, "omitted_unknown_records": 0, "truncated": false }
+  },
+  "recurrence": {
+    "schema_version": 1,
+    "session_id": "course-skill-recurrence-001",
+    "harness": "pi",
+    "project_root": "$PROJECT_ROOT",
+    "started_at": "2026-08-03T09:00:00.000Z",
+    "ended_at": "2026-08-03T09:01:00.000Z",
+    "events": [
+      { "sequence": 0, "kind": "tool_invocation", "timestamp": "2026-08-03T09:00:10.000Z", "payload": { "call_id": "test-3", "tool_name": "bash", "input": { "command": "npm test" } } },
+      { "sequence": 1, "kind": "tool_result", "timestamp": "2026-08-03T09:00:20.000Z", "payload": { "call_id": "test-3", "is_error": true, "output": "TypeError: Cannot read properties of undefined (reading 'name')\n    at loadUser ($PROJECT_ROOT/src/user.ts:188:27)" } }
+    ],
+    "capture": { "captured_at": "2026-08-03T09:01:01.000Z", "omitted_reasoning_blocks": 0, "omitted_unknown_records": 0, "truncated": false }
+  }
+}

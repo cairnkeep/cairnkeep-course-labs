@@ -5,7 +5,7 @@ learning path. The canonical explanations remain in Cairnkeep's `docs/learning`;
 this repository supplies one reproducible project and stable Git checkpoints.
 
 **Lesson coverage:** L00, L01, L02, L03, L04, L05, L06, L07, L08, L09,
-L10, L11, L12, L13, L14, L15, L16, L17, L18.
+L10, L11, L12, L13, L14, L15, L16, L17, L18, L19.
 
 ## How to use checkpoints
 
@@ -28,6 +28,7 @@ work you want to keep. The final `main` branch contains every lab.
 | `course-06-governance` | L15 | Capability precedence and restart exercise |
 | `course-07-evaluation` | L16-L17 | Offline evaluation and product-boundary exercise |
 | `course-08-graph` | L18 | Optional local structural graph and harness delegates |
+| `course-09-skill` | L19 | Reviewed, evaluated, reversible skill improvement |
 
 ## Adoption order
 
@@ -73,6 +74,7 @@ Each step is useful without the next. No optional feature is silently enabled.
 - [06 - Capability governance](labs/06-capability-governance.md) maps L15.
 - [07 - Evaluation and boundaries](labs/07-evaluation-and-boundaries.md) maps L16-L17.
 - [08 - Local code graph](labs/08-local-code-graph.md) maps L18.
+- [09 - Validated skill improvement](labs/09-validated-skill-improvement.md) maps L19.
 
 ## Universal verification
 

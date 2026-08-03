@@ -7,13 +7,16 @@ const required = [
   "src/trail-ledger.mjs",
   "fixtures/review-target/README.md",
   "labs/08-local-code-graph.md",
+  "labs/09-validated-skill-improvement.md",
   "scripts/set-course-graph.mjs",
+  "scripts/setup-skill-lab.mjs",
+  "scripts/test-skill-lab.sh",
 ];
 
 for (const path of required) await access(path);
 
 const course = await readFile("COURSE.md", "utf8");
-for (const id of ["L03", "L04", "L05", "L06", "L07", "L08", "L09", "L10", "L11", "L12", "L13", "L14", "L15", "L16", "L17", "L18"]) {
+for (const id of ["L03", "L04", "L05", "L06", "L07", "L08", "L09", "L10", "L11", "L12", "L13", "L14", "L15", "L16", "L17", "L18", "L19"]) {
   if (!course.includes(id)) throw new Error(`course spine does not map ${id}`);
 }
 
@@ -29,6 +32,14 @@ const gitignore = await readFile(".gitignore", "utf8");
 if (!gitignore.split(/\r?\n/).includes("graphify-out/")) {
   throw new Error("course does not ignore Graphify's incremental work directory");
 }
+
+const skillLab = await readFile("labs/09-validated-skill-improvement.md", "utf8");
+for (const operation of ["harvest", "review", "propose", "evaluate", "apply", "rollback"]) {
+  if (!skillLab.includes(`skill ${operation}`)) throw new Error(`skill lab does not cover ${operation}`);
+}
+if (!skillLab.includes("course-09-skill")) throw new Error("skill lab has no stable checkpoint");
+if (!skillLab.includes("CAIRN_EVAL=1")) throw new Error("skill lab omits the evaluation opt-in gate");
+if (!skillLab.includes("FULL_PROPOSAL_DIGEST")) throw new Error("skill lab omits exact-digest application");
 for (const flag of ["CAIRN_TRAJECTORY_CAPTURE", "CAIRN_TYPED_MEMORY_NODES", "CAIRN_CAPABILITY_CONTRACT", "CAIRN_EVAL"]) {
   if (!course.includes(flag)) throw new Error(`course spine does not cover ${flag}`);
 }
