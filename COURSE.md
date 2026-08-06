@@ -5,7 +5,7 @@ learning path. The canonical explanations remain in Cairnkeep's `docs/learning`;
 this repository supplies one reproducible project and stable Git checkpoints.
 
 **Lesson coverage:** L00, L01, L02, L03, L04, L05, L06, L07, L08, L09,
-L10, L11, L12, L13, L14, L15, L16, L17, L18, L19.
+L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21.
 
 ## How to use checkpoints
 
@@ -29,6 +29,7 @@ work you want to keep. The final `main` branch contains every lab.
 | `course-07-evaluation` | L16-L17 | Offline evaluation and product-boundary exercise |
 | `course-08-graph` | L18 | Optional local structural graph and harness delegates |
 | `course-09-skill` | L19 | Reviewed, evaluated, reversible skill improvement |
+| `course-10-trust-context` | L20-L21 | Least-authority MCP profiles and immutable context packs |
 
 ## Adoption order
 
@@ -39,6 +40,8 @@ work you want to keep. The final `main` branch contains every lab.
 5. **Optional evidence:** trajectories, hindsight notes, compaction, artifacts.
 6. **Optional governance:** typed nodes and capability state.
 7. **Optional measurement:** deterministic evaluation and one-capability ablation.
+8. **Optional trust boundaries:** least-authority MCP profiles and immutable,
+   explicitly approved external context.
 
 Each step is useful without the next. No optional feature is silently enabled.
 
@@ -64,6 +67,8 @@ Each step is useful without the next. No optional feature is silently enabled.
 | Evaluation | Off | `CAIRN_EVAL`, `cairn eval` | contained experiment output | 07 |
 | Meta-agent proposal loop | Not shipped | design contract only | none | 07 |
 | Local code graph | Off | `cairn graph`, `/graphify` delegates | ignored `.planning/graphs/` artifacts and isolated `graphify` CLI | 08 |
+| MCP tool profiles | Full | `cairn mcp-tools` | mode-`0600` project configuration | 10 |
+| Immutable context packs | Off | `cairn pack`, read-only pack MCP tools | `.course-state/context-packs` | 10 |
 
 ## Modules
 
@@ -75,6 +80,7 @@ Each step is useful without the next. No optional feature is silently enabled.
 - [07 - Evaluation and boundaries](labs/07-evaluation-and-boundaries.md) maps L16-L17.
 - [08 - Local code graph](labs/08-local-code-graph.md) maps L18.
 - [09 - Validated skill improvement](labs/09-validated-skill-improvement.md) maps L19.
+- [10 - Trust profiles and immutable context](labs/10-trust-profiles-and-context-packs.md) maps L20-L21.
 
 ## Universal verification
 

@@ -8,6 +8,7 @@ const required = [
   "fixtures/review-target/README.md",
   "labs/08-local-code-graph.md",
   "labs/09-validated-skill-improvement.md",
+  "labs/10-trust-profiles-and-context-packs.md",
   "scripts/set-course-graph.mjs",
   "scripts/setup-skill-lab.mjs",
   "scripts/test-skill-lab.sh",
@@ -16,7 +17,7 @@ const required = [
 for (const path of required) await access(path);
 
 const course = await readFile("COURSE.md", "utf8");
-for (const id of ["L03", "L04", "L05", "L06", "L07", "L08", "L09", "L10", "L11", "L12", "L13", "L14", "L15", "L16", "L17", "L18", "L19"]) {
+for (const id of ["L03", "L04", "L05", "L06", "L07", "L08", "L09", "L10", "L11", "L12", "L13", "L14", "L15", "L16", "L17", "L18", "L19", "L20", "L21"]) {
   if (!course.includes(id)) throw new Error(`course spine does not map ${id}`);
 }
 
@@ -40,6 +41,12 @@ for (const operation of ["harvest", "review", "propose", "evaluate", "apply", "r
 if (!skillLab.includes("course-09-skill")) throw new Error("skill lab has no stable checkpoint");
 if (!skillLab.includes("CAIRN_EVAL=1")) throw new Error("skill lab omits the evaluation opt-in gate");
 if (!skillLab.includes("FULL_PROPOSAL_DIGEST")) throw new Error("skill lab omits exact-digest application");
+const trustLab = await readFile("labs/10-trust-profiles-and-context-packs.md", "utf8");
+for (const operation of ["mcp-tools set read-only", "mcp-tools set custom", "pack validate", "pack install", "pack enable", "pack approve-skill", "pack revoke-skill"]) {
+  if (!trustLab.includes(operation)) throw new Error(`trust/context lab does not cover ${operation}`);
+}
+if (!trustLab.includes("course-10-trust-context")) throw new Error("trust/context lab has no stable checkpoint");
+if (!trustLab.includes("CAIRN_CONTEXT_PACKS=1")) throw new Error("trust/context lab omits the context-pack gate");
 for (const flag of ["CAIRN_TRAJECTORY_CAPTURE", "CAIRN_TYPED_MEMORY_NODES", "CAIRN_CAPABILITY_CONTRACT", "CAIRN_EVAL"]) {
   if (!course.includes(flag)) throw new Error(`course spine does not cover ${flag}`);
 }

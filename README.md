@@ -2,7 +2,8 @@
 
 A synthetic project for learning Cairnkeep from the first bootstrap through
 reviewed memory, derived knowledge, storage operations, optional session
-evidence, capability governance, and evaluation.
+evidence, capability governance, evaluation, least-authority MCP profiles, and
+immutable context packs.
 
 The application is deliberately small: Trail Ledger records fictional shared
 equipment. The code is only a stable subject for the memory and context labs.
