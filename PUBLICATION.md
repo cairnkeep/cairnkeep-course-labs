@@ -14,7 +14,7 @@ Never maintain a separate demo script with different commands.
 | Episode | Checkpoint | Written focus | Demo beat | Target |
 |---|---|---|---|---:|
 | 00 | `course-00-app` | Why durable context exists | Ask the app question before memory | 8 min |
-| 01 | `course-01-bootstrap` | Install, storage, and first project | Bootstrap and doctor | 12 min |
+| 01 | `course-01-bootstrap` | Install, storage, and first project | Guided setup and doctor | 12 min |
 | 02 | `course-02-memory` | Reviewed memory and project knowledge | New-session recall and wiki query | 14 min |
 | 03 | `course-03-quality` | Review and security | Find one reproducible serious bug | 14 min |
 | 04 | `course-04-operation` | Storage and optional topology | Export, restore, and draw data flow | 15 min |
@@ -26,6 +26,12 @@ Never maintain a separate demo script with different commands.
 | 10 | `course-10-trust-context` | Least authority and immutable context | Restrict tools, pin a pack, approve and revoke one skill | 18 min |
 | 11 | `course-11-windows` | Native Windows operation | Guided PowerShell setup, ACL check, reversible uninstall | 14 min |
 | 12 | `course-12-guided-setup` | Guided setup and Pi memory | Select Pi, sync explicitly, cancel safely, exit without an orphan | 16 min |
+
+Presenter-ready scripts for the v2.11 additions live in
+[`video-scripts/11-native-windows.md`](video-scripts/11-native-windows.md) and
+[`video-scripts/12-guided-setup-and-pi.md`](video-scripts/12-guided-setup-and-pi.md).
+They use the same checkpoints and commands as the executable labs; do not
+maintain a separate demo path.
 
 ## Presenter script frame
 
