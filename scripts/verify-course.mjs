@@ -1,5 +1,7 @@
 import { access, readFile } from "node:fs/promises";
 
+const baseline = "2.11.0";
+
 const required = [
   "AGENTS.md",
   "COURSE.md",
@@ -19,6 +21,9 @@ const required = [
 for (const path of required) await access(path);
 
 const course = await readFile("COURSE.md", "utf8");
+if (!course.includes(`**Baseline:** Cairnkeep ${baseline}`)) throw new Error("course baseline is stale");
+const workflow = await readFile(".github/workflows/ci.yml", "utf8");
+if (!workflow.includes(`@cairnkeep/cli@${baseline}`)) throw new Error("course CI core version is stale");
 for (const id of ["L03", "L04", "L05", "L06", "L07", "L08", "L09", "L10", "L11", "L12", "L13", "L14", "L15", "L16", "L17", "L18", "L19", "L20", "L21", "L22", "L23"]) {
   if (!course.includes(id)) throw new Error(`course spine does not map ${id}`);
 }

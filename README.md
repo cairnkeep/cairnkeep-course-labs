@@ -1,6 +1,6 @@
 # Cairnkeep course labs
 
-A synthetic project for learning Cairnkeep from the first bootstrap through
+A synthetic project for learning Cairnkeep from the first guided setup through
 reviewed memory, derived knowledge, storage operations, optional session
 evidence, capability governance, evaluation, least-authority MCP profiles, and
 immutable context packs, through native Windows and guided Pi setup.
