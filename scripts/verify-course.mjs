@@ -13,6 +13,8 @@ const required = [
   "labs/10-trust-profiles-and-context-packs.md",
   "labs/11-native-windows.md",
   "labs/12-guided-setup-and-pi.md",
+  "video-scripts/11-native-windows.md",
+  "video-scripts/12-guided-setup-and-pi.md",
   "scripts/set-course-graph.mjs",
   "scripts/setup-skill-lab.mjs",
   "scripts/test-skill-lab.sh",
@@ -65,6 +67,17 @@ for (const operation of ["setup", "--harness pi", "sync-pi --apply", "sync-pi --
 }
 if (!guidedLab.includes("course-12-guided-setup")) throw new Error("guided setup lab has no stable checkpoint");
 if (!guidedLab.includes("0.84.1")) throw new Error("guided setup lab omits the supported Pi minimum");
+const windowsVideo = await readFile("video-scripts/11-native-windows.md", "utf8");
+const guidedVideo = await readFile("video-scripts/12-guided-setup-and-pi.md", "utf8");
+for (const [name, script, checkpoint] of [
+  ["Windows", windowsVideo, "course-11-windows"],
+  ["guided Pi", guidedVideo, "course-12-guided-setup"],
+]) {
+  if (!script.includes("**Target duration:**")) throw new Error(`${name} video has no target duration`);
+  if (!script.includes(checkpoint)) throw new Error(`${name} video has no stable checkpoint`);
+  if (!script.includes("## Before recording")) throw new Error(`${name} video has no recording preflight`);
+  if (!script.includes("## Privacy and trust boundary")) throw new Error(`${name} video omits its trust boundary`);
+}
 for (const flag of ["CAIRN_TRAJECTORY_CAPTURE", "CAIRN_TYPED_MEMORY_NODES", "CAIRN_CAPABILITY_CONTRACT", "CAIRN_EVAL"]) {
   if (!course.includes(flag)) throw new Error(`course spine does not cover ${flag}`);
 }
