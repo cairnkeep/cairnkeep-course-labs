@@ -21,7 +21,11 @@ Never maintain a separate demo script with different commands.
 | 05 | `course-05-evidence` | Evidence and typed nodes | Inspect redaction and dry-run import | 15 min |
 | 06 | `course-06-governance` | Capability state | Disable, restart, reset | 11 min |
 | 07 | `course-07-evaluation` | Measurement and boundaries | Validate, run, read claim scope | 16 min |
+| 08 | `course-08-graph` | Local structural context | Build, query, explain, and inspect provenance | 14 min |
 | 09 | `course-09-skill` | Validated skill improvement | Review, evaluate, apply, roll back | 18 min |
+| 10 | `course-10-trust-context` | Least authority and immutable context | Restrict tools, pin a pack, approve and revoke one skill | 18 min |
+| 11 | `course-11-windows` | Native Windows operation | Guided PowerShell setup, ACL check, reversible uninstall | 14 min |
+| 12 | `course-12-guided-setup` | Guided setup and Pi memory | Select Pi, sync explicitly, cancel safely, exit without an orphan | 16 min |
 
 ## Presenter script frame
 
