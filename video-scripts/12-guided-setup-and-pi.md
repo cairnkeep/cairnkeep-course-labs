@@ -1,13 +1,13 @@
-# Video script - Guided setup and Pi memory
+# Video script - Guided setup with Codex and Pi
 
-**Target duration:** 16 minutes  
+**Target duration:** 17 minutes
 **Lesson:** Cairnkeep L23  
-**Lab:** [12 - Guided setup and Pi memory](../labs/12-guided-setup-and-pi.md)  
+**Lab:** [12 - Guided setup with Codex and Pi](../labs/12-guided-setup-and-pi.md)
 **Checkpoint:** `course-12-guided-setup`
 
 ## Before recording
 
-- Use Cairnkeep 2.11.0, Node.js 22 or newer, Git, and Pi 0.84.1 or newer.
+- Use Cairnkeep 2.12.0, Node.js 22 or newer, Git, and Pi 0.84.1 or newer.
 - Work from a disposable clone and isolated `PI_CODING_AGENT_DIR`; never alter
   the presenter's normal Pi agent root.
 - Prepare one synthetic fact and one cancellable read. Do not show normal
@@ -17,9 +17,9 @@
 
 ## 00:00 - Outcome
 
-**Say:** “We will configure an empty project for Pi, install Cairnkeep's Pi
-assets explicitly, exercise its maintained local stdio bridge, cancel one call
-without ending the session, and exit without leaving an orphan.”
+**Say:** “We will select Codex and Pi from Cairnkeep's harness registry, inspect
+Codex's project-local MCP entry, install Cairnkeep's Pi assets explicitly,
+exercise its maintained local stdio bridge, and exit without leaving an orphan.”
 
 ## 00:50 - Stable checkpoint and empty target
 
@@ -34,13 +34,23 @@ choice. The isolated Pi root keeps this exercise away from normal configuration.
 **Show:**
 
 ```bash
-cairn setup "$project" --git init --harness pi --memory local --yes
+cairn setup "$project" --git init --harness codex,pi --memory local --yes
 ```
 
-**Say:** “Setup records the selected harness and reconciles project files. It
-does not modify the Pi installation. That machine boundary remains explicit.”
+**Say:** “Setup records selections from one declarative harness registry and
+reconciles project files. It does not modify the Pi installation. That machine
+boundary remains explicit.”
 
-## 04:00 - Explicit Pi sync
+## 03:15 - Inspect the Codex boundary
+
+**Show:** `.ai/start-codex.sh` and the `cairn-memory` table in
+`.codex/config.toml`.
+
+**Say:** “Codex is project-scoped and needs no Cairnkeep machine sync. Setup
+does not edit user-wide Codex configuration or grant project trust. The
+operator reviews this table and accepts trust in Codex before launching.”
+
+## 04:30 - Explicit Pi sync
 
 **Show:** `cairn sync-pi --apply --live-root "$pi_root"`, then the corresponding
 `--check` command and the three owned asset locations.
@@ -48,7 +58,7 @@ does not modify the Pi installation. That machine boundary remains explicit.”
 **Say:** “Sync owns only Cairnkeep's memory extension, trajectory extension,
 and graph prompt. It does not install skills, start Pi, or enable remote access.”
 
-## 06:00 - Doctor separates the two surfaces
+## 06:30 - Doctor separates the surfaces
 
 **Show:** Run `cairn doctor` from the project.
 
@@ -56,7 +66,7 @@ and graph prompt. It does not install skills, start Pi, or enable remote access.
 recovery commands. That distinction prevents setup from silently expanding its
 authority.”
 
-## 07:30 - Exercise the local bridge
+## 08:00 - Exercise the local bridge
 
 **Show:** Launch the generated Pi launcher with the isolated root. List the
 Cairnkeep tools, store/read the synthetic fact, cancel one in-flight call, and
@@ -66,13 +76,13 @@ perform a later read.
 catalog is the server's effective catalog after feature gates, capabilities,
 and MCP profile restrictions.”
 
-## 10:30 - Annotation boundary
+## 11:00 - Annotation boundary
 
 **Say:** “Pi 0.84.1 has no native annotations field in its public tool API.
 Cairnkeep retains annotations in trusted bridge metadata and result details. We
 must not describe that as native propagation.”
 
-## 11:30 - Recovery and shutdown
+## 12:00 - Recovery and shutdown
 
 **Show:** Repair one disposable project drift with doctor's exact setup command,
 repair one Pi asset with `sync-pi --apply`, exit Pi normally, and verify that no
@@ -82,9 +92,10 @@ lab-owned `cairn memory-server` child remains.
 
 **Say:** “The extension spawns a local stdio child and does not inherit a remote
 HTTP memory endpoint. Selecting Pi does not enable trajectory capture,
-embeddings, context packs, or skill activation.”
+embeddings, context packs, or skill activation. Codex project trust remains an
+explicit operator decision.”
 
-## 14:00 - Backup-first cleanup
+## 14:30 - Backup-first cleanup
 
 **Show:** The uninstall dry run and confirmed command with the isolated Pi root
 and project. Identify the backup and revert instructions.
@@ -92,8 +103,8 @@ and project. Identify the backup and revert instructions.
 **Say:** “Memory and context packs remain unless their independent purge flags
 are explicitly chosen.”
 
-## 15:10 - Recap
+## 16:10 - Recap
 
-**Say:** “Guided setup stayed project-scoped, Pi sync stayed explicit, the
-bridge remained local, per-call cancellation preserved the session, and normal
-shutdown left no orphan.”
+**Say:** “One registry selected the project assets, Codex stayed project-scoped,
+Pi sync stayed explicit, the bridge remained local, per-call cancellation
+preserved the session, and normal shutdown left no orphan.”

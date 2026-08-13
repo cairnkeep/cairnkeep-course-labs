@@ -1,6 +1,6 @@
 # Video script - Native Windows lifecycle
 
-**Target duration:** 14 minutes  
+**Target duration:** 15 minutes
 **Lesson:** Cairnkeep L22  
 **Lab:** [11 - Native Windows lifecycle](../labs/11-native-windows.md)  
 **Checkpoint:** `course-11-windows`
@@ -8,7 +8,7 @@
 ## Before recording
 
 - Use native Windows x64, PowerShell, Node.js 22 or newer, Git, and Cairnkeep
-  2.11.0. Do not use WSL or Git Bash.
+  2.12.0. Do not use WSL or Git Bash.
 - Start from a disposable clone at `course-11-windows` and an empty temporary
   path containing spaces.
 - Hide notifications, user profile details, package-registry credentials, and
@@ -34,21 +34,27 @@ uses x64 emulation, and WSL would prove the Linux path instead.”
 **Show:** Create `$Lab` under `$env:TEMP`, then run:
 
 ```powershell
-cairn setup $Lab --git init --harness claude --memory local --yes
+cairn setup $Lab --git init --harness claude,codex --memory local --yes
 ```
 
 **Say:** “The explicit flags make the demo deterministic. Setup owns target
-preflight, Git initialization, the Claude selection, and the private
-reconciliation record. It does not silently install machine-level assets.”
+preflight, Git initialization, selections from one declarative harness registry,
+and the private reconciliation record. It does not silently install
+machine-level assets.”
 
 ## 04:15 - Native launchers and doctor
 
-**Show:** `.git`, `.ai\cairnkeep.json`, `.ai\start-claude.cmd`, and
-`.ai\start-harness.ps1`. Apply an isolated live root, enter `$Lab`, and run
-`cairn doctor`.
+**Show:** `.git`, `.ai\cairnkeep.json`, `.ai\start-claude.cmd`,
+`.ai\start-codex.cmd`, `.ai\start-harness.ps1`, and `.codex\config.toml`.
+Review the generated `cairn-memory` table. Apply an isolated Claude live root,
+enter `$Lab`, and run `cairn doctor`.
 
 **Say:** “Doctor completes a local MCP stdio handshake. No remote endpoint,
 model, capture source, pack, or schedule was enabled by setup.”
+
+**Say:** “Codex needs no Cairnkeep machine sync. Setup does not edit its
+user-wide configuration or grant project trust; the operator reviews the local
+table and makes that trust decision in Codex.”
 
 ## 06:30 - Inspect the Windows ACL
 
@@ -81,11 +87,11 @@ memory unless its separate purge option is explicitly selected.”
 
 **Say:** “Native Windows support changes path, process, scheduling, and
 permission mechanics. It does not add a network or grant access to a corpus.
-The ACL protects local state; a context-pack digest proves integrity, not
-publisher identity.”
+Codex project trust remains explicit. The ACL protects local state; a
+context-pack digest proves integrity, not publisher identity.”
 
 ## 12:45 - Recap
 
-**Say:** “We proved native PowerShell operation, deterministic Git setup,
-Windows ACL enforcement, local doctor, and reversible cleanup—without WSL,
-Git Bash, or a destructive memory purge.”
+**Say:** “We proved native PowerShell operation, deterministic multi-harness
+setup, project-scoped Codex memory, Windows ACL enforcement, local doctor, and
+reversible cleanup—without WSL, Git Bash, or a destructive memory purge.”
