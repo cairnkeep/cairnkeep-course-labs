@@ -12,7 +12,7 @@ exercise backup-first uninstall without WSL or Git Bash.
 
 ## Setup
 
-Run from PowerShell after installing `@cairnkeep/cli@2.11.0`:
+Run from PowerShell after installing `@cairnkeep/cli@2.12.0`:
 
 ```powershell
 git switch --detach course-11-windows
@@ -21,7 +21,7 @@ cairn version
 
 $Lab = Join-Path $env:TEMP 'Cairnkeep Course Windows Lab'
 New-Item -ItemType Directory -Force -Path $Lab | Out-Null
-cairn setup $Lab --git init --harness claude --memory local --yes
+cairn setup $Lab --git init --harness claude,codex --memory local --yes
 cairn sync --apply --live-root (Join-Path $Lab '.claude-test')
 Push-Location $Lab
 cairn doctor
@@ -29,8 +29,10 @@ Pop-Location
 ```
 
 The setup must create `.git`, the private `.ai\cairnkeep.json` reconciliation
-record, `.ai\start-claude.cmd`, and `.ai\start-harness.ps1`. Doctor must report
-native Windows x64 and complete its local MCP stdio check.
+record, `.ai\start-claude.cmd`, `.ai\start-codex.cmd`,
+`.ai\start-harness.ps1`, and `.codex\config.toml`. Review the Codex MCP table;
+setup does not edit user-wide Codex configuration or grant project trust.
+Doctor must report native Windows x64 and complete its local MCP stdio check.
 
 ## Inspect the permission boundary
 
@@ -59,5 +61,7 @@ Durable memory remains unless its separate purge option is explicitly chosen.
   emulation; WSL is the Linux topology.
 - Git is required because the lab selects `--git init`.
 - `sqlite3.exe` is optional for runtime but required for WAL-safe export.
+- Codex receives a project-local stdio entry and needs no machine-level Cairnkeep
+  sync. Accepting Codex project trust remains an operator action.
 - No context pack, capture, network endpoint, model, or audit schedule is
   enabled by this exercise.

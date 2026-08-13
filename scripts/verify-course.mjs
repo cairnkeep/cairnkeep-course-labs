@@ -1,6 +1,6 @@
 import { access, readFile } from "node:fs/promises";
 
-const baseline = "2.11.0";
+const baseline = "2.12.0";
 
 const required = [
   "AGENTS.md",
@@ -57,18 +57,22 @@ for (const operation of ["mcp-tools set read-only", "mcp-tools set custom", "pac
 if (!trustLab.includes("course-10-trust-context")) throw new Error("trust/context lab has no stable checkpoint");
 if (!trustLab.includes("CAIRN_CONTEXT_PACKS=1")) throw new Error("trust/context lab omits the context-pack gate");
 const windowsLab = await readFile("labs/11-native-windows.md", "utf8");
-for (const boundary of ["PowerShell", "--git init", "Get-Acl", "uninstall --dry-run", "revert.ps1"]) {
+for (const boundary of ["PowerShell", "--git init", "--harness claude,codex", ".codex\\config.toml", "Get-Acl", "uninstall --dry-run", "revert.ps1"]) {
   if (!windowsLab.includes(boundary)) throw new Error(`Windows lab omits ${boundary}`);
 }
 if (!windowsLab.includes("course-11-windows")) throw new Error("Windows lab has no stable checkpoint");
 const guidedLab = await readFile("labs/12-guided-setup-and-pi.md", "utf8");
-for (const operation of ["setup", "--harness pi", "sync-pi --apply", "sync-pi --check", "cairn doctor"]) {
+for (const operation of ["setup", "--harness codex,pi", ".codex/config.toml", "sync-pi --apply", "sync-pi --check", "cairn doctor"]) {
   if (!guidedLab.includes(operation)) throw new Error(`guided setup lab omits ${operation}`);
 }
 if (!guidedLab.includes("course-12-guided-setup")) throw new Error("guided setup lab has no stable checkpoint");
 if (!guidedLab.includes("0.84.1")) throw new Error("guided setup lab omits the supported Pi minimum");
 const windowsVideo = await readFile("video-scripts/11-native-windows.md", "utf8");
 const guidedVideo = await readFile("video-scripts/12-guided-setup-and-pi.md", "utf8");
+for (const [name, script] of [["Windows", windowsVideo], ["guided setup", guidedVideo]]) {
+  if (!script.includes("Codex")) throw new Error(`${name} video omits the Codex v2.12 path`);
+  if (!script.includes("project trust")) throw new Error(`${name} video omits explicit Codex project trust`);
+}
 for (const [name, script, checkpoint] of [
   ["Windows", windowsVideo, "course-11-windows"],
   ["guided Pi", guidedVideo, "course-12-guided-setup"],

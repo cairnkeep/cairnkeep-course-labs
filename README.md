@@ -4,6 +4,8 @@ A synthetic project for learning Cairnkeep from the first guided setup through
 reviewed memory, derived knowledge, storage operations, optional session
 evidence, capability governance, evaluation, least-authority MCP profiles, and
 immutable context packs, through native Windows and guided Pi setup.
+The v2.12 labs also cover Cairnkeep's declarative harness registry and Codex's
+project-scoped local MCP configuration without granting project trust.
 
 The application is deliberately small: Trail Ledger records fictional shared
 equipment. The code is only a stable subject for the memory and context labs.

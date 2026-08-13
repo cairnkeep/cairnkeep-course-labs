@@ -4,7 +4,7 @@ This repository is the shared hands-on narrative for the public Cairnkeep
 learning path. The canonical explanations remain in Cairnkeep's `docs/learning`;
 this repository supplies one reproducible project and stable Git checkpoints.
 
-**Baseline:** Cairnkeep 2.11.0
+**Baseline:** Cairnkeep 2.12.0
 
 **Lesson coverage:** L00, L01, L02, L03, L04, L05, L06, L07, L08, L09,
 L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23.
@@ -22,7 +22,7 @@ work you want to keep. The final `main` branch contains every lab.
 | Checkpoint | Lessons | Learner-visible change |
 |---|---|---|
 | `course-00-app` | L00-L02 | Working synthetic app before Cairnkeep |
-| `course-01-bootstrap` | L03 | Neutral scaffold and isolated course environment |
+| `course-01-bootstrap` | L03 | Guided setup, Codex project configuration, and isolated course environment |
 | `course-02-memory` | L04-L05 | Reviewed memory and derived-knowledge exercises |
 | `course-03-quality` | L06 | Deliberately vulnerable review target |
 | `course-04-operation` | L07-L12 | Storage, multi-machine, optional integrations, containers, overlays |
@@ -33,7 +33,7 @@ work you want to keep. The final `main` branch contains every lab.
 | `course-09-skill` | L19 | Reviewed, evaluated, reversible skill improvement |
 | `course-10-trust-context` | L20-L21 | Least-authority MCP profiles and immutable context packs |
 | `course-11-windows` | L22 | Native PowerShell setup, ACL inspection, and reversible uninstall |
-| `course-12-guided-setup` | L23 | Deterministic Pi selection, explicit machine sync, and bridge recovery |
+| `course-12-guided-setup` | L23 | Registry-driven Codex and Pi selection, explicit Pi sync, and bridge recovery |
 
 ## Adoption order
 
@@ -46,8 +46,8 @@ work you want to keep. The final `main` branch contains every lab.
 7. **Optional measurement:** deterministic evaluation and one-capability ablation.
 8. **Optional trust boundaries:** least-authority MCP profiles and immutable,
    explicitly approved external context.
-9. **Platform and harness operation:** native Windows lifecycle and Pi's
-   maintained local stdio memory bridge.
+9. **Platform and harness operation:** native Windows lifecycle, Codex's
+   project-scoped MCP entry, and Pi's maintained local stdio memory bridge.
 
 Each step is useful without the next. No optional feature is silently enabled.
 
@@ -76,7 +76,8 @@ Each step is useful without the next. No optional feature is silently enabled.
 | MCP tool profiles | Full | `cairn mcp-tools` | mode-`0600` project configuration | 10 |
 | Immutable context packs | Off | `cairn pack`, read-only pack MCP tools | `.course-state/context-packs` | 10 |
 | Native Windows | Supported on x64 | PowerShell-native `cairn setup`, sync, doctor, audit timer, and uninstall | Windows ACLs and user-local stores | 11 |
-| Guided project setup | Explicit | `cairn setup` | private `.ai/cairnkeep.json` reconciliation record | 12 |
+| Declarative harness selection | Explicit | `cairn setup --harness LIST` | private `.ai/cairnkeep.json` reconciliation record | 12 |
+| Codex local memory | Explicit project selection and trust | generated `.codex/config.toml` and launcher | local stdio child; no user-wide configuration or machine sync | 12 |
 | Pi local stdio memory | Explicit machine sync | `cairn sync-pi`, generated Pi launcher | isolated Pi agent root plus project-local child process | 12 |
 
 ## Modules
@@ -91,7 +92,7 @@ Each step is useful without the next. No optional feature is silently enabled.
 - [09 - Validated skill improvement](labs/09-validated-skill-improvement.md) maps L19.
 - [10 - Trust profiles and immutable context](labs/10-trust-profiles-and-context-packs.md) maps L20-L21.
 - [11 - Native Windows lifecycle](labs/11-native-windows.md) maps L22.
-- [12 - Guided setup and Pi memory](labs/12-guided-setup-and-pi.md) maps L23.
+- [12 - Guided setup with Codex and Pi](labs/12-guided-setup-and-pi.md) maps L23.
 
 ## Universal verification
 
