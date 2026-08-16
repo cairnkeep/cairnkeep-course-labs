@@ -16,9 +16,11 @@ PROJECT_STORE="$ROOT/.agentfs"
 rm -rf -- "$TARGET"
 if [[ -d $PROJECT_STORE ]]; then
   find "$PROJECT_STORE" -maxdepth 1 -type f ! -name .gitignore -delete
-  if [[ -d $PROJECT_STORE/eval ]]; then
-    chmod -R u+w "$PROJECT_STORE/eval"
-    rm -rf -- "$PROJECT_STORE/eval"
-  fi
+  for nested in eval work-evidence; do
+    if [[ -d $PROJECT_STORE/$nested ]]; then
+      chmod -R u+w "$PROJECT_STORE/$nested"
+      rm -rf -- "$PROJECT_STORE/$nested"
+    fi
+  done
 fi
 printf 'removed course-only state: %s\n' "$TARGET"

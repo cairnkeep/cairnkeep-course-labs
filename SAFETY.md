@@ -6,17 +6,19 @@ This repository is intentionally public and synthetic. Treat it as disposable.
 
 All exercises use fictional equipment, people, policies, errors, and decisions.
 Do not paste or import material from a real repository. Named/global memory and
-notes use ignored `.course-state/`. Project memory, trajectory, artifact, and
-canonical evaluation stores use the ignored `.agentfs/` directory because
+notes use ignored `.course-state/`. Project memory, trajectory, artifact,
+Git-linked work evidence, and canonical evaluation stores use the ignored
+`.agentfs/` directory because
 project-owned state is intentionally tied to the server working directory.
 
 ## Feature boundary
 
 Cairnkeep's normal memory workflow is local-first. Trajectory capture,
-hindsight notes, compaction artifacts, typed nodes, capability governance, and
-evaluation are independent opt-ins. A lab enables only the feature it teaches
-and its cleanup removes only `.course-state/`, generated database files
-immediately under this clone's `.agentfs/`, and `.agentfs/eval/`.
+hindsight notes, compaction artifacts, Git-linked work evidence, typed nodes,
+capability governance, and evaluation are independent opt-ins. A lab enables
+only the feature it teaches and its cleanup removes only `.course-state/`,
+generated database files immediately under this clone's `.agentfs/`,
+`.agentfs/eval/`, and `.agentfs/work-evidence/`.
 
 ## Vulnerable fixture
 

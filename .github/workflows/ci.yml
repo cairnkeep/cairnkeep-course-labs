@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: npm run check
-      - run: npm install --no-save --ignore-scripts @cairnkeep/cli@2.12.0
+      - run: npm install --no-save --ignore-scripts @cairnkeep/cli@2.13.0
       - run: scripts/test-skill-lab.sh
         env:
           CAIRN_COURSE_CORE_ROOT: ${{ github.workspace }}/node_modules/@cairnkeep/cli

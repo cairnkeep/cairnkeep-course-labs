@@ -1,6 +1,6 @@
 import { access, readFile } from "node:fs/promises";
 
-const baseline = "2.12.0";
+const baseline = "2.13.0";
 
 const required = [
   "AGENTS.md",
@@ -13,6 +13,7 @@ const required = [
   "labs/10-trust-profiles-and-context-packs.md",
   "labs/11-native-windows.md",
   "labs/12-guided-setup-and-pi.md",
+  "video-scripts/05-git-work-evidence.md",
   "video-scripts/11-native-windows.md",
   "video-scripts/12-guided-setup-and-pi.md",
   "scripts/set-course-graph.mjs",
@@ -26,6 +27,8 @@ const course = await readFile("COURSE.md", "utf8");
 if (!course.includes(`**Baseline:** Cairnkeep ${baseline}`)) throw new Error("course baseline is stale");
 const workflow = await readFile(".github/workflows/ci.yml", "utf8");
 if (!workflow.includes(`@cairnkeep/cli@${baseline}`)) throw new Error("course CI core version is stale");
+const reset = await readFile("scripts/reset-course-state.sh", "utf8");
+if (!reset.includes("work-evidence")) throw new Error("course cleanup omits work evidence");
 for (const id of ["L03", "L04", "L05", "L06", "L07", "L08", "L09", "L10", "L11", "L12", "L13", "L14", "L15", "L16", "L17", "L18", "L19", "L20", "L21", "L22", "L23"]) {
   if (!course.includes(id)) throw new Error(`course spine does not map ${id}`);
 }
@@ -67,13 +70,19 @@ for (const operation of ["setup", "--harness codex,pi", ".codex/config.toml", "s
 }
 if (!guidedLab.includes("course-12-guided-setup")) throw new Error("guided setup lab has no stable checkpoint");
 if (!guidedLab.includes("0.84.1")) throw new Error("guided setup lab omits the supported Pi minimum");
+const evidenceLab = await readFile("labs/05-session-evidence.md", "utf8");
+for (const boundary of ["CAIRN_WORK_EVIDENCE_PATCH=1", "cairn evidence list", "cairn evidence show", "cairn evidence doctor", "cairn evidence prune --dry-run", "authorship", "untracked body", "no apply, restore"]) {
+  if (!evidenceLab.includes(boundary)) throw new Error(`work-evidence lab omits ${boundary}`);
+}
+const evidenceVideo = await readFile("video-scripts/05-git-work-evidence.md", "utf8");
 const windowsVideo = await readFile("video-scripts/11-native-windows.md", "utf8");
 const guidedVideo = await readFile("video-scripts/12-guided-setup-and-pi.md", "utf8");
 for (const [name, script] of [["Windows", windowsVideo], ["guided setup", guidedVideo]]) {
-  if (!script.includes("Codex")) throw new Error(`${name} video omits the Codex v2.12 path`);
+  if (!script.includes("Codex")) throw new Error(`${name} video omits the Codex v2.13 path`);
   if (!script.includes("project trust")) throw new Error(`${name} video omits explicit Codex project trust`);
 }
 for (const [name, script, checkpoint] of [
+  ["Git work evidence", evidenceVideo, "course-05-evidence"],
   ["Windows", windowsVideo, "course-11-windows"],
   ["guided Pi", guidedVideo, "course-12-guided-setup"],
 ]) {
@@ -82,7 +91,7 @@ for (const [name, script, checkpoint] of [
   if (!script.includes("## Before recording")) throw new Error(`${name} video has no recording preflight`);
   if (!script.includes("## Privacy and trust boundary")) throw new Error(`${name} video omits its trust boundary`);
 }
-for (const flag of ["CAIRN_TRAJECTORY_CAPTURE", "CAIRN_TYPED_MEMORY_NODES", "CAIRN_CAPABILITY_CONTRACT", "CAIRN_EVAL"]) {
+for (const flag of ["CAIRN_TRAJECTORY_CAPTURE", "CAIRN_WORK_EVIDENCE", "CAIRN_TYPED_MEMORY_NODES", "CAIRN_CAPABILITY_CONTRACT", "CAIRN_EVAL"]) {
   if (!course.includes(flag)) throw new Error(`course spine does not cover ${flag}`);
 }
 

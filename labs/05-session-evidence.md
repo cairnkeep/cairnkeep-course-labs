@@ -15,10 +15,11 @@ Then run:
 ```bash
 cairn trajectory list --json
 cairn artifact list --json
+cairn evidence list --json
 ```
 
-No new session or artifact should appear. Credentials alone never enable these
-features.
+No new session, artifact, or Git work-evidence record should appear.
+Credentials alone never enable these features.
 
 ## Part B: capture synthetic evidence
 
@@ -44,6 +45,10 @@ printf '%s\n' 'Error: unknown item: course-missing' \
 cairn notes doctor --json
 cairn artifact list --json
 cairn artifact prune --dry-run --json
+cairn evidence list --status complete --json
+cairn evidence show EVIDENCE-ID --json
+cairn evidence doctor --json
+cairn evidence prune --dry-run --json
 ```
 
 Confirm that the trajectory omits reasoning, built-in/custom redaction ran
@@ -51,7 +56,27 @@ before persistence, the deterministic note is distinct from reviewed memory,
 and any compaction summary is an immutable local artifact rather than trusted
 instructions. Note enrichment and artifact HTTP remain disabled.
 
-## Part C: typed memory and controlled import
+Confirm that work evidence contains start/end Git state, touched path labels,
+exit status and integrity digests, but no prompt, keystroke, command history or
+reasoning. Explain why concurrent writers mean the interval does not prove
+authorship. The workspace digest is content-derived and is not redaction.
+
+## Part C: optional patch boundary
+
+Use only the synthetic Trail Ledger fixture. Make one tracked edit before
+launch, then add this second consent flag and relaunch through `.ai/start-*.sh`:
+
+```bash
+printf '%s\n' 'CAIRN_WORK_EVIDENCE_PATCH=1' >> .ai/.env
+```
+
+Make another tracked edit and create one untracked synthetic file. After exit,
+inspect the evidence and linked artifact. The patch can include both tracked
+edits because its scope is the starting commit to the ending worktree. Confirm
+that the untracked body is absent and that Cairnkeep exposes no apply, restore,
+or replay command. Remove the added flag before continuing.
+
+## Part D: typed memory and controlled import
 
 Exit the harness, replace `.ai/.env`, and restart so the server tool schema is
 rebuilt with typed nodes:
@@ -83,9 +108,11 @@ In the relaunched harness:
 
 - Default-off produces no evidence.
 - Capture is local, redacted, bounded, and explicitly inspectable.
-- Trajectory, note, artifact, and reviewed memory have distinct trust levels.
+- Trajectory, note, artifact, Git work evidence, and reviewed memory have
+  distinct trust levels.
+- Work evidence is interval context rather than authorship proof; optional
+  patches require separate consent and cannot be applied by Cairnkeep.
 - Typed filters apply before ranking.
 - Dry run writes nothing; apply/replay is stable; reject does not overwrite.
 - Cleanup removes only this clone's `.course-state/` and generated `.agentfs/`
   databases.
-

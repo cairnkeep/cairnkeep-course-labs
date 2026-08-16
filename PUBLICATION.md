@@ -18,7 +18,7 @@ Never maintain a separate demo script with different commands.
 | 02 | `course-02-memory` | Reviewed memory and project knowledge | New-session recall and wiki query | 14 min |
 | 03 | `course-03-quality` | Review and security | Find one reproducible serious bug | 14 min |
 | 04 | `course-04-operation` | Storage and optional topology | Export, restore, and draw data flow | 15 min |
-| 05 | `course-05-evidence` | Evidence and typed nodes | Inspect redaction and dry-run import | 15 min |
+| 05 | `course-05-evidence` | Evidence and typed nodes | Inspect Git interval evidence, redaction, and dry-run import | 18 min |
 | 06 | `course-06-governance` | Capability state | Disable, restart, reset | 11 min |
 | 07 | `course-07-evaluation` | Measurement and boundaries | Validate, run, read claim scope | 16 min |
 | 08 | `course-08-graph` | Local structural context | Build, query, explain, and inspect provenance | 14 min |
@@ -27,8 +27,10 @@ Never maintain a separate demo script with different commands.
 | 11 | `course-11-windows` | Native Windows operation | Guided PowerShell setup, ACL check, reversible uninstall | 14 min |
 | 12 | `course-12-guided-setup` | Registry-driven Codex and Pi setup | Inspect Codex trust, sync Pi explicitly, cancel safely, exit without an orphan | 17 min |
 
-Presenter-ready scripts for the v2.12 platform and guided-setup surfaces live in
-[`video-scripts/11-native-windows.md`](video-scripts/11-native-windows.md) and
+Presenter-ready scripts for the v2.13 evidence, platform, and guided-setup
+surfaces live in
+[`video-scripts/05-git-work-evidence.md`](video-scripts/05-git-work-evidence.md),
+[`video-scripts/11-native-windows.md`](video-scripts/11-native-windows.md), and
 [`video-scripts/12-guided-setup-and-pi.md`](video-scripts/12-guided-setup-and-pi.md).
 They use the same checkpoints and commands as the executable labs; do not
 maintain a separate demo path.

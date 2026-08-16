@@ -2,7 +2,7 @@
 
 **Checkpoint:** `course-12-guided-setup`  
 **Public lesson:** L23  
-**Requirements:** Cairnkeep 2.12.0, Pi 0.84.1 or newer, Node.js 22 or newer
+**Requirements:** Cairnkeep 2.13.0, Pi 0.84.1 or newer, Node.js 22 or newer
 
 ## Outcome
 
