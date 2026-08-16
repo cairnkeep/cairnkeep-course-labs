@@ -8,7 +8,7 @@
 ## Before recording
 
 - Use native Windows x64, PowerShell, Node.js 22 or newer, Git, and Cairnkeep
-  2.12.0. Do not use WSL or Git Bash.
+  2.13.0. Do not use WSL or Git Bash.
 - Start from a disposable clone at `course-11-windows` and an empty temporary
   path containing spaces.
 - Hide notifications, user profile details, package-registry credentials, and

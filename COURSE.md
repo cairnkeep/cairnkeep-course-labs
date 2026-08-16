@@ -4,7 +4,7 @@ This repository is the shared hands-on narrative for the public Cairnkeep
 learning path. The canonical explanations remain in Cairnkeep's `docs/learning`;
 this repository supplies one reproducible project and stable Git checkpoints.
 
-**Baseline:** Cairnkeep 2.12.0
+**Baseline:** Cairnkeep 2.13.0
 
 **Lesson coverage:** L00, L01, L02, L03, L04, L05, L06, L07, L08, L09,
 L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23.
@@ -41,7 +41,8 @@ work you want to keep. The final `main` branch contains every lab.
 2. **Derived project knowledge:** wiki, alignment, graph, review, security.
 3. **Operations:** locate, export, import, route, isolate, and uninstall safely.
 4. **Optional accelerators:** document RAG and context exploration.
-5. **Optional evidence:** trajectories, hindsight notes, compaction, artifacts.
+5. **Optional evidence:** trajectories, hindsight notes, compaction, artifacts,
+   and launcher-owned Git work evidence.
 6. **Optional governance:** typed nodes and capability state.
 7. **Optional measurement:** deterministic evaluation and one-capability ablation.
 8. **Optional trust boundaries:** least-authority MCP profiles and immutable,
@@ -68,6 +69,7 @@ Each step is useful without the next. No optional feature is silently enabled.
 | Trajectories | Off | `CAIRN_TRAJECTORY_CAPTURE`, `cairn trajectory` | local project evidence DB | 05 |
 | Hindsight notes | Off | `CAIRN_NOTE_DISTILLATION`, `cairn notes` | local note hierarchy | 05 |
 | Compaction and artifacts | Off | capture/store flags, `cairn artifact` | local artifact DB | 05 |
+| Git-linked work evidence | Off | `CAIRN_WORK_EVIDENCE`, `cairn evidence` | local `.agentfs/work-evidence/v1/` metadata | 05 |
 | Typed nodes/import | Off | `CAIRN_TYPED_MEMORY_NODES`, MCP tools | memory metadata and journal | 05 |
 | Capability contract | Off | `CAIRN_CAPABILITY_CONTRACT`, `cairn capabilities` | project config and optional callback DB | 06 |
 | Evaluation | Off | `CAIRN_EVAL`, `cairn eval` | contained experiment output | 07 |
@@ -120,5 +122,6 @@ scripts/reset-course-state.sh --yes
 ```
 
 This command refuses to operate unless its targets are this repository's
-`.course-state/` and generated database files immediately under `.agentfs/`.
+`.course-state/`, generated database files immediately under `.agentfs/`, and
+the course-created `.agentfs/eval/` and `.agentfs/work-evidence/` trees.
 It does not touch the user's normal Cairnkeep store.
