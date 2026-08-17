@@ -1,6 +1,6 @@
 import { access, readFile } from "node:fs/promises";
 
-const baseline = "2.14.0";
+const baseline = "2.15.0";
 
 const required = [
   "AGENTS.md",
@@ -16,14 +16,17 @@ const required = [
   "labs/10-trust-profiles-and-context-packs.md",
   "labs/11-native-windows.md",
   "labs/12-guided-setup-and-pi.md",
+  "labs/13-bounded-playbooks.md",
   "video-scripts/05-git-work-evidence.md",
   "video-scripts/10-okf-exchange.md",
   "video-scripts/11-native-windows.md",
   "video-scripts/12-guided-setup-and-pi.md",
+  "video-scripts/13-bounded-playbooks.md",
   "scripts/set-course-graph.mjs",
   "scripts/setup-skill-lab.mjs",
   "scripts/test-skill-lab.sh",
   "scripts/test-okf-lab.sh",
+  "scripts/test-playbook-lab.sh",
 ];
 
 for (const path of required) await access(path);
@@ -34,7 +37,7 @@ const workflow = await readFile(".github/workflows/ci.yml", "utf8");
 if (!workflow.includes(`@cairnkeep/cli@${baseline}`)) throw new Error("course CI core version is stale");
 const reset = await readFile("scripts/reset-course-state.sh", "utf8");
 if (!reset.includes("work-evidence")) throw new Error("course cleanup omits work evidence");
-for (const id of ["L03", "L04", "L05", "L06", "L07", "L08", "L09", "L10", "L11", "L12", "L13", "L14", "L15", "L16", "L17", "L18", "L19", "L20", "L21", "L22", "L23", "L24"]) {
+for (const id of ["L03", "L04", "L05", "L06", "L07", "L08", "L09", "L10", "L11", "L12", "L13", "L14", "L15", "L16", "L17", "L18", "L19", "L20", "L21", "L22", "L23", "L24", "L25"]) {
   if (!course.includes(id)) throw new Error(`course spine does not map ${id}`);
 }
 
@@ -81,6 +84,10 @@ for (const operation of ["setup", "--harness codex,pi", ".codex/config.toml", "s
 }
 if (!guidedLab.includes("course-12-guided-setup")) throw new Error("guided setup lab has no stable checkpoint");
 if (!guidedLab.includes("0.84.1")) throw new Error("guided setup lab omits the supported Pi minimum");
+const playbookLab = await readFile("labs/13-bounded-playbooks.md", "utf8");
+for (const boundary of ["check start", "check finish", "--enforce", "playbook record", "unauthenticated", "execute nothing", "course-13-playbooks"]) {
+  if (!playbookLab.includes(boundary)) throw new Error(`playbook lab omits ${boundary}`);
+}
 const evidenceLab = await readFile("labs/05-session-evidence.md", "utf8");
 for (const boundary of ["CAIRN_WORK_EVIDENCE_PATCH=1", "cairn evidence list", "cairn evidence show", "cairn evidence doctor", "cairn evidence prune --dry-run", "authorship", "untracked body", "no apply, restore"]) {
   if (!evidenceLab.includes(boundary)) throw new Error(`work-evidence lab omits ${boundary}`);
@@ -89,6 +96,7 @@ const evidenceVideo = await readFile("video-scripts/05-git-work-evidence.md", "u
 const okfVideo = await readFile("video-scripts/10-okf-exchange.md", "utf8");
 const windowsVideo = await readFile("video-scripts/11-native-windows.md", "utf8");
 const guidedVideo = await readFile("video-scripts/12-guided-setup-and-pi.md", "utf8");
+const playbookVideo = await readFile("video-scripts/13-bounded-playbooks.md", "utf8");
 for (const [name, script] of [["Windows", windowsVideo], ["guided setup", guidedVideo]]) {
   if (!script.includes("Codex")) throw new Error(`${name} video omits the Codex v2.13 path`);
   if (!script.includes("project trust")) throw new Error(`${name} video omits explicit Codex project trust`);
@@ -98,6 +106,7 @@ for (const [name, script, checkpoint] of [
   ["OKF exchange", okfVideo, "course-10-trust-context"],
   ["Windows", windowsVideo, "course-11-windows"],
   ["guided Pi", guidedVideo, "course-12-guided-setup"],
+  ["playbooks", playbookVideo, "course-13-playbooks"],
 ]) {
   if (!script.includes("**Target duration:**")) throw new Error(`${name} video has no target duration`);
   if (!script.includes(checkpoint)) throw new Error(`${name} video has no stable checkpoint`);

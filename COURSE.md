@@ -4,11 +4,11 @@ This repository is the shared hands-on narrative for the public Cairnkeep
 learning path. The canonical explanations remain in Cairnkeep's `docs/learning`;
 this repository supplies one reproducible project and stable Git checkpoints.
 
-**Baseline:** Cairnkeep 2.14.0
+**Baseline:** Cairnkeep 2.15.0
 
 **Lesson coverage:** L00, L01, L02, L03, L04, L05, L06, L07, L08, L09,
 L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23,
-L24.
+L24, L25.
 
 ## How to use checkpoints
 
@@ -35,6 +35,7 @@ work you want to keep. The final `main` branch contains every lab.
 | `course-10-trust-context` | L20-L21, L24 | Least-authority MCP profiles, immutable context packs, and reviewed OKF exchange |
 | `course-11-windows` | L22 | Native PowerShell setup, ACL inspection, and reversible uninstall |
 | `course-12-guided-setup` | L23 | Registry-driven Codex and Pi selection, explicit Pi sync, and bridge recovery |
+| `course-13-playbooks` | L25 | Bounded local workflow policy, deterministic enforcement, private receipts, and managed instructions |
 
 ## Adoption order
 
@@ -50,6 +51,8 @@ work you want to keep. The final `main` branch contains every lab.
    explicitly approved external context, and reviewed OKF import/export.
 9. **Platform and harness operation:** native Windows lifecycle, Codex's
    project-scoped MCP entry, and Pi's maintained local stdio memory bridge.
+10. **Bounded workflow policy:** proportional start/check/finish actions with
+    explicit evidence and no execution or approval authority.
 
 Each step is useful without the next. No optional feature is silently enabled.
 
@@ -83,6 +86,7 @@ Each step is useful without the next. No optional feature is silently enabled.
 | Declarative harness selection | Explicit | `cairn setup --harness LIST` | private `.ai/cairnkeep.json` reconciliation record | 12 |
 | Codex local memory | Explicit project selection and trust | generated `.codex/config.toml` and launcher | local stdio child; no user-wide configuration or machine sync | 12 |
 | Pi local stdio memory | Explicit machine sync | `cairn sync-pi`, generated Pi launcher | isolated Pi agent root plus project-local child process | 12 |
+| Workflow playbooks | Balanced local policy | `cairn playbook`, managed `AGENTS.md`, thin harness adapters | private policy and course-only receipt store | 13 |
 
 ## Modules
 
@@ -97,6 +101,7 @@ Each step is useful without the next. No optional feature is silently enabled.
 - [10 - Trust profiles, immutable context, and OKF exchange](labs/10-trust-profiles-and-context-packs.md) maps L20-L21 and L24.
 - [11 - Native Windows lifecycle](labs/11-native-windows.md) maps L22.
 - [12 - Guided setup with Codex and Pi](labs/12-guided-setup-and-pi.md) maps L23.
+- [13 - Bounded workflow playbooks](labs/13-bounded-playbooks.md) maps L25.
 
 ## Universal verification
 
