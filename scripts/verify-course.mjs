@@ -1,6 +1,6 @@
 import { access, readFile } from "node:fs/promises";
 
-const baseline = "2.13.1";
+const baseline = "2.14.0";
 
 const required = [
   "AGENTS.md",
@@ -8,17 +8,22 @@ const required = [
   "SAFETY.md",
   "src/trail-ledger.mjs",
   "fixtures/review-target/README.md",
+  "fixtures/okf/index.md",
+  "fixtures/okf/concepts/equipment-policy.md",
+  "fixtures/okf/concepts/response-playbook.md",
   "labs/08-local-code-graph.md",
   "labs/09-validated-skill-improvement.md",
   "labs/10-trust-profiles-and-context-packs.md",
   "labs/11-native-windows.md",
   "labs/12-guided-setup-and-pi.md",
   "video-scripts/05-git-work-evidence.md",
+  "video-scripts/10-okf-exchange.md",
   "video-scripts/11-native-windows.md",
   "video-scripts/12-guided-setup-and-pi.md",
   "scripts/set-course-graph.mjs",
   "scripts/setup-skill-lab.mjs",
   "scripts/test-skill-lab.sh",
+  "scripts/test-okf-lab.sh",
 ];
 
 for (const path of required) await access(path);
@@ -29,7 +34,7 @@ const workflow = await readFile(".github/workflows/ci.yml", "utf8");
 if (!workflow.includes(`@cairnkeep/cli@${baseline}`)) throw new Error("course CI core version is stale");
 const reset = await readFile("scripts/reset-course-state.sh", "utf8");
 if (!reset.includes("work-evidence")) throw new Error("course cleanup omits work evidence");
-for (const id of ["L03", "L04", "L05", "L06", "L07", "L08", "L09", "L10", "L11", "L12", "L13", "L14", "L15", "L16", "L17", "L18", "L19", "L20", "L21", "L22", "L23"]) {
+for (const id of ["L03", "L04", "L05", "L06", "L07", "L08", "L09", "L10", "L11", "L12", "L13", "L14", "L15", "L16", "L17", "L18", "L19", "L20", "L21", "L22", "L23", "L24"]) {
   if (!course.includes(id)) throw new Error(`course spine does not map ${id}`);
 }
 
@@ -59,6 +64,12 @@ for (const operation of ["mcp-tools set read-only", "mcp-tools set custom", "pac
 }
 if (!trustLab.includes("course-10-trust-context")) throw new Error("trust/context lab has no stable checkpoint");
 if (!trustLab.includes("CAIRN_CONTEXT_PACKS=1")) throw new Error("trust/context lab omits the context-pack gate");
+for (const operation of ["pack validate-okf", "pack import-okf", "pack export-okf", "context_pack_related"]) {
+  if (!trustLab.includes(operation)) throw new Error(`trust/context lab does not cover ${operation}`);
+}
+for (const boundary of ["never fetches", "never executes", "allowlist-only", "exact preview digest", "publisher authenticity"]) {
+  if (!trustLab.includes(boundary)) throw new Error(`OKF lab omits ${boundary}`);
+}
 const windowsLab = await readFile("labs/11-native-windows.md", "utf8");
 for (const boundary of ["PowerShell", "--git init", "--harness claude,codex", ".codex\\config.toml", "Get-Acl", "uninstall --dry-run", "revert.ps1"]) {
   if (!windowsLab.includes(boundary)) throw new Error(`Windows lab omits ${boundary}`);
@@ -75,6 +86,7 @@ for (const boundary of ["CAIRN_WORK_EVIDENCE_PATCH=1", "cairn evidence list", "c
   if (!evidenceLab.includes(boundary)) throw new Error(`work-evidence lab omits ${boundary}`);
 }
 const evidenceVideo = await readFile("video-scripts/05-git-work-evidence.md", "utf8");
+const okfVideo = await readFile("video-scripts/10-okf-exchange.md", "utf8");
 const windowsVideo = await readFile("video-scripts/11-native-windows.md", "utf8");
 const guidedVideo = await readFile("video-scripts/12-guided-setup-and-pi.md", "utf8");
 for (const [name, script] of [["Windows", windowsVideo], ["guided setup", guidedVideo]]) {
@@ -83,6 +95,7 @@ for (const [name, script] of [["Windows", windowsVideo], ["guided setup", guided
 }
 for (const [name, script, checkpoint] of [
   ["Git work evidence", evidenceVideo, "course-05-evidence"],
+  ["OKF exchange", okfVideo, "course-10-trust-context"],
   ["Windows", windowsVideo, "course-11-windows"],
   ["guided Pi", guidedVideo, "course-12-guided-setup"],
 ]) {
@@ -90,6 +103,9 @@ for (const [name, script, checkpoint] of [
   if (!script.includes(checkpoint)) throw new Error(`${name} video has no stable checkpoint`);
   if (!script.includes("## Before recording")) throw new Error(`${name} video has no recording preflight`);
   if (!script.includes("## Privacy and trust boundary")) throw new Error(`${name} video omits its trust boundary`);
+}
+for (const boundary of ["context_pack_related", "no-write preview", "exact digest", "publisher authenticity", "never executes"]) {
+  if (!okfVideo.includes(boundary)) throw new Error(`OKF video omits ${boundary}`);
 }
 for (const flag of ["CAIRN_TRAJECTORY_CAPTURE", "CAIRN_WORK_EVIDENCE", "CAIRN_TYPED_MEMORY_NODES", "CAIRN_CAPABILITY_CONTRACT", "CAIRN_EVAL"]) {
   if (!course.includes(flag)) throw new Error(`course spine does not cover ${flag}`);

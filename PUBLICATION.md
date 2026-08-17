@@ -23,13 +23,14 @@ Never maintain a separate demo script with different commands.
 | 07 | `course-07-evaluation` | Measurement and boundaries | Validate, run, read claim scope | 16 min |
 | 08 | `course-08-graph` | Local structural context | Build, query, explain, and inspect provenance | 14 min |
 | 09 | `course-09-skill` | Validated skill improvement | Review, evaluate, apply, roll back | 18 min |
-| 10 | `course-10-trust-context` | Least authority and immutable context | Restrict tools, pin a pack, approve and revoke one skill | 18 min |
+| 10 | `course-10-trust-context` | Least authority, immutable context, and reviewed exchange | Restrict tools, pin a pack, inspect OKF links, and export an allowlist | 22 min |
 | 11 | `course-11-windows` | Native Windows operation | Guided PowerShell setup, ACL check, reversible uninstall | 14 min |
 | 12 | `course-12-guided-setup` | Registry-driven Codex and Pi setup | Inspect Codex trust, sync Pi explicitly, cancel safely, exit without an orphan | 17 min |
 
-Presenter-ready scripts for the v2.13 evidence, platform, and guided-setup
+Presenter-ready scripts for the v2.14 evidence, trust, platform, and guided-setup
 surfaces live in
 [`video-scripts/05-git-work-evidence.md`](video-scripts/05-git-work-evidence.md),
+[`video-scripts/10-okf-exchange.md`](video-scripts/10-okf-exchange.md),
 [`video-scripts/11-native-windows.md`](video-scripts/11-native-windows.md), and
 [`video-scripts/12-guided-setup-and-pi.md`](video-scripts/12-guided-setup-and-pi.md).
 They use the same checkpoints and commands as the executable labs; do not

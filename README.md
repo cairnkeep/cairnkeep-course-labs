@@ -4,9 +4,11 @@ A synthetic project for learning Cairnkeep from the first guided setup through
 reviewed memory, derived knowledge, storage operations, optional session
 evidence, capability governance, evaluation, least-authority MCP profiles, and
 immutable context packs, through native Windows and guided Pi setup.
-The v2.13 labs also cover Cairnkeep's declarative harness registry, Codex's
+The v2.14 labs also cover Cairnkeep's declarative harness registry, Codex's
 project-scoped local MCP configuration without granting project trust, and
-opt-in Git-linked work evidence across all generated harness launchers.
+opt-in Git-linked work evidence across all generated harness launchers. Module
+10 adds reviewed OKF 0.1/0.2 exchange, deterministic related-document retrieval,
+and an allowlist-only redacted export with exact-digest confirmation.
 
 The application is deliberately small: Trail Ledger records fictional shared
 equipment. The code is only a stable subject for the memory and context labs.
