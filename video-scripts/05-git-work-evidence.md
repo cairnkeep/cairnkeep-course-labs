@@ -7,7 +7,7 @@
 
 ## Before recording
 
-- Use Cairnkeep 2.13.0, Node.js 22 or newer, Git, and a disposable clone at
+- Use Cairnkeep 2.13.1, Node.js 22 or newer, Git, and a disposable clone at
   `course-05-evidence`.
 - Use only the fictional Trail Ledger data. Clear prior `.agentfs/` and
   `.course-state/` evidence, hide notifications, and verify `git status`.

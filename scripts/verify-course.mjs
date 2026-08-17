@@ -1,6 +1,6 @@
 import { access, readFile } from "node:fs/promises";
 
-const baseline = "2.13.0";
+const baseline = "2.13.1";
 
 const required = [
   "AGENTS.md",

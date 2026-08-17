@@ -7,7 +7,7 @@
 
 ## Before recording
 
-- Use Cairnkeep 2.13.0, Node.js 22 or newer, Git, and Pi 0.84.1 or newer.
+- Use Cairnkeep 2.13.1, Node.js 22 or newer, Git, and Pi 0.84.1 or newer.
 - Work from a disposable clone and isolated `PI_CODING_AGENT_DIR`; never alter
   the presenter's normal Pi agent root.
 - Prepare one synthetic fact and one cancellable read. Do not show normal
