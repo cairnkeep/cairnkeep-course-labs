@@ -4,10 +4,11 @@ This repository is the shared hands-on narrative for the public Cairnkeep
 learning path. The canonical explanations remain in Cairnkeep's `docs/learning`;
 this repository supplies one reproducible project and stable Git checkpoints.
 
-**Baseline:** Cairnkeep 2.13.1
+**Baseline:** Cairnkeep 2.14.0
 
 **Lesson coverage:** L00, L01, L02, L03, L04, L05, L06, L07, L08, L09,
-L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23.
+L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23,
+L24.
 
 ## How to use checkpoints
 
@@ -31,7 +32,7 @@ work you want to keep. The final `main` branch contains every lab.
 | `course-07-evaluation` | L16-L17 | Offline evaluation and product-boundary exercise |
 | `course-08-graph` | L18 | Optional local structural graph and harness delegates |
 | `course-09-skill` | L19 | Reviewed, evaluated, reversible skill improvement |
-| `course-10-trust-context` | L20-L21 | Least-authority MCP profiles and immutable context packs |
+| `course-10-trust-context` | L20-L21, L24 | Least-authority MCP profiles, immutable context packs, and reviewed OKF exchange |
 | `course-11-windows` | L22 | Native PowerShell setup, ACL inspection, and reversible uninstall |
 | `course-12-guided-setup` | L23 | Registry-driven Codex and Pi selection, explicit Pi sync, and bridge recovery |
 
@@ -45,8 +46,8 @@ work you want to keep. The final `main` branch contains every lab.
    and launcher-owned Git work evidence.
 6. **Optional governance:** typed nodes and capability state.
 7. **Optional measurement:** deterministic evaluation and one-capability ablation.
-8. **Optional trust boundaries:** least-authority MCP profiles and immutable,
-   explicitly approved external context.
+8. **Optional trust boundaries:** least-authority MCP profiles, immutable
+   explicitly approved external context, and reviewed OKF import/export.
 9. **Platform and harness operation:** native Windows lifecycle, Codex's
    project-scoped MCP entry, and Pi's maintained local stdio memory bridge.
 
@@ -77,6 +78,7 @@ Each step is useful without the next. No optional feature is silently enabled.
 | Local code graph | Off | `cairn graph`, `/graphify` delegates | ignored `.planning/graphs/` artifacts and isolated `graphify` CLI | 08 |
 | MCP tool profiles | Full | `cairn mcp-tools` | mode-`0600` project configuration | 10 |
 | Immutable context packs | Off | `cairn pack`, read-only pack MCP tools | `.course-state/context-packs` | 10 |
+| Open Knowledge Format exchange | Off | `cairn pack validate-okf|import-okf|export-okf`, `context_pack_related` | `.course-state/okf` | 10 |
 | Native Windows | Supported on x64 | PowerShell-native `cairn setup`, sync, doctor, audit timer, and uninstall | Windows ACLs and user-local stores | 11 |
 | Declarative harness selection | Explicit | `cairn setup --harness LIST` | private `.ai/cairnkeep.json` reconciliation record | 12 |
 | Codex local memory | Explicit project selection and trust | generated `.codex/config.toml` and launcher | local stdio child; no user-wide configuration or machine sync | 12 |
@@ -92,7 +94,7 @@ Each step is useful without the next. No optional feature is silently enabled.
 - [07 - Evaluation and boundaries](labs/07-evaluation-and-boundaries.md) maps L16-L17.
 - [08 - Local code graph](labs/08-local-code-graph.md) maps L18.
 - [09 - Validated skill improvement](labs/09-validated-skill-improvement.md) maps L19.
-- [10 - Trust profiles and immutable context](labs/10-trust-profiles-and-context-packs.md) maps L20-L21.
+- [10 - Trust profiles, immutable context, and OKF exchange](labs/10-trust-profiles-and-context-packs.md) maps L20-L21 and L24.
 - [11 - Native Windows lifecycle](labs/11-native-windows.md) maps L22.
 - [12 - Guided setup with Codex and Pi](labs/12-guided-setup-and-pi.md) maps L23.
 
