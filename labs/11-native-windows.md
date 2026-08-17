@@ -12,7 +12,7 @@ exercise backup-first uninstall without WSL or Git Bash.
 
 ## Setup
 
-Run from PowerShell after installing `@cairnkeep/cli@2.13.0`:
+Run from PowerShell after installing `@cairnkeep/cli@2.13.1`:
 
 ```powershell
 git switch --detach course-11-windows
