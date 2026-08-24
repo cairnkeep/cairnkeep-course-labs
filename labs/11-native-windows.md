@@ -22,7 +22,7 @@ cairn version
 
 $Lab = Join-Path $env:TEMP 'Cairnkeep Course Windows Lab'
 New-Item -ItemType Directory -Force -Path $Lab | Out-Null
-cairn setup $Lab --git init --harness claude,codex --memory local --yes
+cairn setup $Lab --git init --harness 'claude,codex' --memory local --yes
 cairn sync --apply --live-root (Join-Path $Lab '.claude-test')
 Push-Location $Lab
 cairn doctor
