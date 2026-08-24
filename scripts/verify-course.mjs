@@ -74,7 +74,7 @@ for (const boundary of ["never fetches", "never executes", "allowlist-only", "ex
   if (!trustLab.includes(boundary)) throw new Error(`OKF lab omits ${boundary}`);
 }
 const windowsLab = await readFile("labs/11-native-windows.md", "utf8");
-for (const boundary of ["PowerShell", "--git init", "--harness claude,codex", ".codex\\config.toml", "Get-Acl", "uninstall --dry-run", "revert.ps1"]) {
+for (const boundary of ["PowerShell", "--git init", "--harness 'claude,codex'", ".codex\\config.toml", "Get-Acl", "uninstall --dry-run", "revert.ps1"]) {
   if (!windowsLab.includes(boundary)) throw new Error(`Windows lab omits ${boundary}`);
 }
 if (!windowsLab.includes("course-11-windows")) throw new Error("Windows lab has no stable checkpoint");

@@ -36,7 +36,7 @@ uses x64 emulation, and WSL would prove the Linux path instead.”
 **Show:** Create `$Lab` under `$env:TEMP`, then run:
 
 ```powershell
-cairn setup $Lab --git init --harness claude,codex --memory local --yes
+cairn setup $Lab --git init --harness 'claude,codex' --memory local --yes
 ```
 
 **Say:** “The explicit flags make the demo deterministic. Setup owns target
