@@ -1,14 +1,16 @@
 # Video script - Native Windows lifecycle
 
-**Target duration:** 15 minutes
+**Target duration:** 7 minutes
 **Lesson:** Cairnkeep L22  
 **Lab:** [11 - Native Windows lifecycle](../labs/11-native-windows.md)  
 **Checkpoint:** `course-11-windows`
 
 ## Before recording
 
-- Use native Windows x64, PowerShell, Node.js 22 or newer, Git, and Cairnkeep
-  2.13.1. Do not use WSL or Git Bash.
+- Use native Windows x64, PowerShell, Node.js 24, Git, and Cairnkeep 2.15.4.
+  Cairnkeep's supported Node.js floor is 22. Do not use WSL or Git Bash.
+- A GitHub-hosted Windows x64 runner is acceptable when the lesson labels it
+  explicitly and terminal timing is presented as a replay of verified output.
 - Start from a disposable clone at `course-11-windows` and an empty temporary
   path containing spaces.
 - Hide notifications, user profile details, package-registry credentials, and
