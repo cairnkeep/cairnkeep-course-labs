@@ -12,7 +12,8 @@ exercise backup-first uninstall without WSL or Git Bash.
 
 ## Setup
 
-Run from PowerShell after installing `@cairnkeep/cli@2.13.1`:
+Run from PowerShell after installing `@cairnkeep/cli@2.15.4`. Cairnkeep's
+supported Node.js floor is 22; the recorded lesson uses Node.js 24:
 
 ```powershell
 git switch --detach course-11-windows
